@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Items from './Items'
 import './App.scss'
 
 class App extends React.Component {
   static propTypes = {
+    children: React.PropTypes.oneOfType([
+      React.PropTypes.arrayOf(React.PropTypes.node),
+      React.PropTypes.node,
+    ]),
     dispatch: React.PropTypes.any,
   }
 
@@ -18,7 +21,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <h1><a href="/">Redux Ordering Problem</a></h1>
-        <Items />
+        {this.props.children}
       </div>
     )
   }
