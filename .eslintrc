@@ -1,0 +1,38 @@
+{
+  "extends": "airbnb",
+
+  "parser": "babel-eslint",
+
+  "ecmaFeatures": {
+    "jsx": true,
+    "experimentalObjectRestSpread": true
+  },
+
+  "rules": {
+    "id-length": 0,           //OK: There is no point to disallow declaring variables as short as `x` or `y`.
+    "no-nested-ternary": 0,   //OK: Nested ternary are fine for conditionnal adffectation if indented properly.
+    "react/no-multi-comp": 0, //OK: Private components can be defined in the same file.
+
+    "no-use-before-define": [2, "nofunc"],   //Allow func to call funcs defined later in order to improve code readability
+    "no-unused-vars": [2, {"args": "none"}], //Allow unused argument definition in order to keep functions signatures self documented.
+    "react/sort-comp": [2, {
+      'order': [
+        'lifecycle',
+        'everything-else',
+        '/^_?(on|handle).+$/',
+        'render',
+        '/^_?render.+$/'
+      ]
+    }],
+    "quote-props": [2, "as-needed"],         //Disallow to quote properties (of object) when it's not requiered.
+    "semi": [2, "never"],          //Semicolons are ugly and I'm fed up with "errors" that in fact are just cargo-culting
+    "no-console": 0, //Allow console.log() statements, too annoying otherwise
+    "new-cap": 0, //Allow functions to start with uppercase letter (for high-order components)
+    "one-var": [2, {
+        "uninitialized": "always", // Exactly one declaration for uninitialized variables per function (var) or block (let or const)
+        "initialized": "never" // Exactly one declarator per initialized variable declaration per function (var) or block (let or const)
+    }],
+    "react/jsx-no-bind": [2],
+    "react/jsx-boolean-value": 0   //Allow using boolean values as we want in JSX attributes
+  },
+}
